@@ -1,0 +1,27 @@
+{
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": ["get", "post"]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "out",
+      "name": "outputDocument",
+      "databaseName": "variant-calc",
+      "collectionName": "felles-ferdig",
+      "createIfNotExists": true,
+      "connectionStringSetting": "COSMOSDB_CONNECTION_STRING",
+      "partitionKey": "/operation"
+    }
+  ],
+  "scriptFile": "../dist/AcceptCalculation/index.js"
+}

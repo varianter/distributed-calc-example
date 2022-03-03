@@ -1,0 +1,26 @@
+{
+  "bindings": [
+    {
+      "type": "cosmosDBTrigger",
+      "name": "documents",
+      "direction": "in",
+      "leaseCollectionName": "leases",
+      "connectionStringSetting": "COSMOSDB_CONNECTION_STRING",
+      "databaseName": "variant-calc",
+      "collectionName": "felles-ferdig",
+      "createLeaseCollectionIfNotExists": true,
+      "leaseCollectionPrefix": "felles-ferdig-calc"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "out",
+      "name": "outputDocument",
+      "databaseName": "variant-calc",
+      "collectionName": "felles-ferdig",
+      "createIfNotExists": true,
+      "connectionStringSetting": "COSMOSDB_CONNECTION_STRING",
+      "partitionKey": "/operation"
+    }
+  ],
+  "scriptFile": "../dist/CosmosTriggerCalculator/index.js"
+}
